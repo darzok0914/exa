@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# Exit if the 'exa' command could not be found
-if ! (( $+commands[exa] )); then
-    echo "ERROR: 'exa' command not found"
-    return
+if (( $+commands[exa] )); then
+    alias ls='exa --group-directories-first --icons'
 fi
 
-# Create alias override commands using 'exa'
-alias ls='exa --group-directories-first --icons'
+if (( $+commands[eza] )); then
+    alias ls='eza --group-directories-first --icons'
+fi
+
 alias ll='ls -lh'
 alias la='ll -a'
 alias tree='ll --tree --level=2'
